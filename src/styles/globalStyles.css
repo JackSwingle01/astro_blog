@@ -1,0 +1,38 @@
+body {
+    font-family: monospace;
+    background-color: whitesmoke;
+    color: #333;
+    margin:0px;
+    /* margin: 20px; */
+    /* padding: 10px; */
+}
+
+nav{
+    background-color: blueviolet;
+    padding : 10px;
+    margin: 0px;
+}
+a{
+    color: white;
+}
+
+.titleBlock {
+    background-color: blueviolet;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    margin:10px;
+}
+
+h2{
+    padding: 10px;
+}
+
+.post {
+    /* max-width: 800px; */
+    margin: 10px;
+    padding: 1em;
+    background-color: white;
+    /* border: 2px, solid, black; */
+    border-radius: 5px;
+}

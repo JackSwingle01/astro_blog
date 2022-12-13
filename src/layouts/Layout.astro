@@ -1,0 +1,29 @@
+---
+import HeaderComponent from '../components/headerComponent.astro';
+import '../styles/globalStyles.css'
+import PageTitleComponent from '../components/pageTitleComponent.astro';
+// import '../../node_modules/bootstrap/dist/css/bootstrap.css'
+export interface Props {
+	title: string;
+	subtitle? :string;
+}
+
+const { title,subtitle } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		
+	</head>
+	<body>
+		<HeaderComponent></HeaderComponent>
+		<PageTitleComponent title={title} subtitle={subtitle}></PageTitleComponent>
+		<slot />
+	</body>
+</html>

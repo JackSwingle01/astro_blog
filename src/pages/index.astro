@@ -1,0 +1,59 @@
+---
+//^ this starts the logic block
+
+//import Layout
+import Layout from "../layouts/Layout.astro";
+
+//import component
+import PostComponent from "../components/postComponent.astro";
+
+//get the .md files from the posts file as objects
+const postsMd = await Astro.glob("./posts/*.md");
+
+//some demo data:
+const name = "Current User";
+const title = "Home Page";
+const users = ["Jack", "Ben", "Audrey", "Brooke"];
+let visible = false;
+
+// make a http request (demo accessing our backend):
+let response = await fetch("http://localhost:3000/posts").then((res) =>
+    res.text()
+);
+//parse it into json
+let posts = JSON.parse(response);
+---
+
+
+
+<Layout title={title} subtitle={"Welcome " + users[0]}>
+    <h2>Api Posts:</h2>
+    <ul>
+        {
+            posts.map((post: any) => (
+                <li>
+                    <PostComponent
+                        title={post.title}
+                        content={post.content}
+                        userId={post.userId}
+                    />
+                </li>
+            ))
+        }
+    </ul>
+
+    <h2>Markdown Posts:</h2>
+    <ul>
+        {
+            postsMd.map((post) => (
+                <li>
+                    <a href={post.url} style="color:blue">
+                        {post.frontmatter.title}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+
+    <!-- {visible ? <p>Visible</p> : <p>not visible</p>} -->
+</Layout>
